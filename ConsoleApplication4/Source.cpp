@@ -1,25 +1,28 @@
-#include<iostream>
-
+#include <iostream>
+#include "SpecialCounter.h"
 using namespace std;
 
-class SpecialCount
+
+int main()
 {
-private:
-	int starter;
-	int stopper;
-	int StepIncrement;
-	int StepDecrement;
-public:
-	SpecialCount();
-	void Start(int start);
-	void Stop(int stop);
-	void stepIncrement(int stepSize);
-	void stepDecrement(int stepSize);
-	SpecialCount operator + (SpecialCount);
-	SpecialCount operator - (SpecialCount);
-	int getStarter();
-	int getStopper();
-	void plus1();
-	void minus1();
-	~SpecialCount();
-};
+	SpecialCounter count, count1, count2;
+	count.Start(20);
+	count.Stop(210);
+	count.stepIncrement(3);
+	count.stepDecrement(3);
+	count1 = count;
+	count2 = count;
+	cout << "Counting up\n" << count1.getStarter() << endl;
+	
+	{
+		count1.plus1();
+		cout << count1.getStarter() << endl;
+	}
+
+	cout << "\n\n Counting Down\n" << count2.getStopper() << endl;
+	
+	{
+		count2.minus1();
+		cout << count2.getStopper() << endl;
+	}
+}
